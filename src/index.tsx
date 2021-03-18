@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'reflect-metadata';
+import { dependenciesContainer, initDependencies } from './di/Dependencies';
+import { DependencyProvider } from './di/DependencyContext';
+import App from './components/app/App';
+import Error from './components/error/Error';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './index.scss';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = document.getElementById('root');
+
+(async () => {
+    try {
+        await initDependencies();
+
+        ReactDOM.render(
+            <React.StrictMode>
+                <DependencyProvider container={dependenciesContainer}>
+                    <App />
+                </DependencyProvider>
+            </React.StrictMode>,
+            root,
+        );
+    } catch (e) {
+        ReactDOM.render(<Error error={e} />, root);
+    }
+})();
