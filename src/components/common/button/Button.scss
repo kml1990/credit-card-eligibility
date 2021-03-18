@@ -1,18 +1,14 @@
 @import '/src/styles/styles';
 
-$small:             $minSpacing * 4;
-$medium:            $small * 2;
-$large:             $medium * 2;
+
 
 .Button {
     @extend %flexCenter;
+    @extend %input;
     flex-wrap: nowrap;
     width: auto;
-    border-radius: $borderRadius;
     color: $white;
     box-shadow: $boxShadow;
-    padding: 0 $mediumPadding;
-    outline: none;
     border: 0;
     cursor: pointer;
 
@@ -41,14 +37,14 @@ $large:             $medium * 2;
     }
 
     &--small {
-        height: $small;
+        height: $inputSmall;
     }
 
     &--medium {
-        height: $medium;
+        height: $inputMedium;
     }
 
     &--large {
-        height: $large;
+        height: $inputLarge;
     }
 }

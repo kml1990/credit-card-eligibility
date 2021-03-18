@@ -1,0 +1,26 @@
+@import '/src/styles/styles';
+
+$labelWidth: 5rem;
+
+.InputField {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $mediumMargin;
+
+    &__label {
+        width: 100%;
+    }
+
+    &__input {
+        @extend %input;
+        height: $inputMedium;
+        width: 100%;
+    }
+
+    &__error {
+        width: 100%;
+        text-align: right;
+        font-size: $xSmallFontSize;
+        color: $error;
+    }
+}

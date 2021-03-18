@@ -2,10 +2,14 @@
  * COMMON VARIABLES
  */
 
-$border: 0.005rem solid $black;
-$borderRadius: 0.75rem;
+$border:                0.005rem solid $greyDark;
+$borderRadius:          0.75rem;
 
-$boxShadow: rgba( $black, .1 ) 0px 0.3rem 1rem;
+$boxShadow:             rgba( $black, .1 ) 0px 0.3rem 1rem;
+
+$inputSmall:            $minSpacing * 4;
+$inputMedium:           $inputSmall * 2;
+$inputLarge:            $inputMedium * 2;
 
 /*
  * Z-INDICES
@@ -88,4 +92,21 @@ $z-index: (
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/*
+ * INPUTS
+ */
+
+/*  
+ *  How to use:
+ *  @extend %input;
+ */
+
+%input {
+    margin: $smallMargin 0;
+    border-radius: $borderRadius;
+    padding: 0 $mediumPadding;
+    border: $border;
+    outline: 0;
 }

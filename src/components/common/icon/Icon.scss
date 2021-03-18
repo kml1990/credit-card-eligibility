@@ -1,0 +1,27 @@
+@import '/src/styles/styles';
+
+.Icon {
+    
+    &--left {
+        margin-right: $smallMargin;
+    }
+
+    &--right {
+        margin-left: $smallMargin;
+    }
+
+    &--spin {
+        > svg {
+            animation: Spin 2s linear infinite;
+        }
+    }
+}
+
+@keyframes Spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+  }

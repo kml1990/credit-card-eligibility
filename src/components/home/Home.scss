@@ -1,5 +1,15 @@
 @import '/src/styles/styles.scss';
 
+$formWidth: 15rem;
+
 .Home {
-    padding: $largePadding;
+    @extend %flexCenter;
+    padding: $mediumPadding;
+
+    &__form {
+        @extend %flexCenterVertically;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        width: $formWidth;
+    }
 }
