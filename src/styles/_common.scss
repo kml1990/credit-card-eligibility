@@ -1,0 +1,91 @@
+/*
+ * COMMON VARIABLES
+ */
+
+$border: 0.005rem solid $black;
+$borderRadius: 0.75rem;
+
+$boxShadow: rgba( $black, .1 ) 0px 0.3rem 1rem;
+
+/*
+ * Z-INDICES
+ */
+
+$z-index: (
+    base: 0,
+);
+
+@function z-index($key) {
+    @return map-get($z-index, $key);
+}
+
+/*  
+ *  How to use:
+ *  @include z-index(grid)
+ */
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}
+
+/*
+ * FLEX
+ */
+
+/*  
+ *  How to use:
+ *  @extend %flexCenter;
+ */
+
+%flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*  
+ *  How to use:
+ *  @extend %flexCenterVertically;
+ */
+
+%flexCenterVertically {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/*  
+ *  How to use:
+ *  @extend %flexCenterHorizontally;
+ */
+
+%flexCenterHorizontally {
+    display: flex;
+    justify-content: center;
+}
+
+/*
+ * BACKGROUND
+ */
+
+/*  
+ *  How to use:
+ *  @extend %backgroundContain;
+ */
+
+%backgroundContain {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*  
+ *  How to use:
+ *  @extend %backgroundCover;
+ */
+
+%backgroundCover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

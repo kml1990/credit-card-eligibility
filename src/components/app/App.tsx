@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Routes, RoutesConfig } from '../../routes/Routes';
 
+import './App.scss';
+
 const App: React.FC = () => {
     return (
         <BrowserRouter>

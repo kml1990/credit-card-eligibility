@@ -1,0 +1,21 @@
+/*
+ * COLOURS
+ */
+
+$primary:               #40376E !default;
+$secondary:             #48233c !default;
+$grey:                  #a4a4ac !default;
+
+$white:                 #ffffff;
+$black:                 #000000;
+
+$primaryLight:          lighten($primary, 15) !default;
+$primaryDark:           darken($primary, 15) !default;
+
+$secondaryLight:        lighten($secondary, 15) !default;
+$secondaryDark:         darken($secondary, 15) !default;
+
+$greyLight:             lighten($grey, 15) !default;
+$greyDark:              darken($grey, 15) !default;
+
+$primaryFontColor:      $white;

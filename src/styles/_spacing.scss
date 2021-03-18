@@ -1,0 +1,15 @@
+/*
+ * SPACING
+ */
+
+ $minSpacing:                0.25rem !default;
+
+ $xSmallMargin:              $minSpacing;
+ $smallMargin:               $xSmallMargin * 2;
+ $mediumMargin:              $smallMargin * 2;
+ $largeMargin:               $mediumMargin * 2;
+ 
+ $xSmallPadding:             $minSpacing;
+ $smallPadding:              $xSmallPadding * 2;
+ $mediumPadding:             $smallPadding * 2;
+ $largePadding:              $mediumPadding * 2;

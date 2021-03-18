@@ -4,9 +4,7 @@ import 'reflect-metadata';
 import { dependenciesContainer, initDependencies } from './di/Dependencies';
 import { DependencyProvider } from './di/DependencyContext';
 import App from './components/app/App';
-import Error from './components/error/Error';
-
-import './index.scss';
+import Error from './components/common/error/Error';
 
 const root = document.getElementById('root');
 

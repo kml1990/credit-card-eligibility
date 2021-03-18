@@ -1,0 +1,54 @@
+@import '/src/styles/styles';
+
+$small:             $minSpacing * 4;
+$medium:            $small * 2;
+$large:             $medium * 2;
+
+.Button {
+    @extend %flexCenter;
+    flex-wrap: nowrap;
+    width: auto;
+    border-radius: $borderRadius;
+    color: $white;
+    box-shadow: $boxShadow;
+    padding: 0 $mediumPadding;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+
+    &--primary {
+        background-color: $primary;
+
+        &:active {
+            background-color: $primaryDark;
+        }
+
+        &:hover {
+            background-color: $primaryLight;
+        }
+    }
+
+    &--secondary {
+        background-color: $secondary;
+
+        &:active {
+            background-color: $secondaryDark;
+        }
+
+        &:hover {
+            background-color: $secondaryLight;
+        }
+    }
+
+    &--small {
+        height: $small;
+    }
+
+    &--medium {
+        height: $medium;
+    }
+
+    &--large {
+        height: $large;
+    }
+}
