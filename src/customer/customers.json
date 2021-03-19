@@ -1,5 +1,6 @@
 [
     {
+        "id": "549b60a6-88ed-11eb-8dcd-0242ac130003",
         "title": "Mr.",
         "name": "Ollie",
         "last_name": "Murphree",
@@ -10,6 +11,7 @@
         "post_code": "BS14 9PR"
     },
     {
+        "id": "c44fd026-88ed-11eb-8dcd-0242ac130003",
         "title": "Miss",
         "name": "Elizabeth",
         "last_name": "Edmundson",
@@ -20,11 +22,12 @@
         "post_code": "PH12 8UW"
     },
     {
+        "id": "cbeb7394-88ed-11eb-8dcd-0242ac130003",
         "title": "Mr.",
         "name": "Trevor",
         "last_name": "Rieck",
         "DOB": "07/09/1990",
-        "employment_status": "Part time",
+        "employment_status": "Part Time",
         "income": 15000,
         "house_number": 343,
         "post_code": "TS25 2NF"

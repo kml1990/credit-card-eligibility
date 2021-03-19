@@ -5,6 +5,10 @@ import { FaBeer, FaSpinner } from 'react-icons/fa';
 import Button from '../common/button/Button';
 import Icon from '../common/icon/Icon';
 import InputField from '../common/input/InputField';
+import { useInjection } from '../../di/DependencyContext';
+import CardService from '../../card/service/CardService';
+import DependencyType from '../../di/DependencyType';
+import Customer from '../../customer/domain/Customer';
 
 import './Home.scss';
 
@@ -19,6 +23,23 @@ const SimpleFormSchema = Yup.object().shape({
 });
 
 const Home: React.FC = () => {
+    const cardService = useInjection<CardService>(DependencyType.CardService);
+    const customerParams = {
+        id: '549b60a6-88ed-11eb-8dcd-0242ac130003',
+        name: 'Kamil',
+        lastName: 'Step',
+        employmentStatus: 'Student',
+        income: 17000,
+    };
+    const customer = new Customer(customerParams);
+    const cards = cardService.loadCards();
+
+    const eligible = cards.filter(card => {
+        return card.isApplicableForCustomer(customer);
+    });
+
+    console.log(eligible);
+
     const initialValues = {
         username: '',
         password: '',

@@ -5,10 +5,9 @@
         "balance_transfer_offer_duration": 0,
         "purchase_offer_duration": 6,
         "credit_available": 1200,
-        "eligibility": [
+        "eligibility_rules": [
             {
                 "field": "employmentStatus",
-                "type": "string",
                 "value": "student"
             }
         ]
@@ -19,7 +18,7 @@
         "balance_transfer_offer_duration": 0,
         "purchase_offer_duration": 0,
         "credit_available": 300,
-        "eligibility": []
+        "eligibility_rules": []
     },
     {
         "name": "Liquid Card",
@@ -27,10 +26,9 @@
         "balance_transfer_offer_duration": 12,
         "purchase_offer_duration": 6,
         "credit_available": 3000,
-        "eligibility": [
+        "eligibility_rules": [
             {
                 "field": "income",
-                "type": "number",
                 "value": {
                     "min": 16000
                 }

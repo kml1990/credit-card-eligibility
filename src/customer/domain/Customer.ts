@@ -1,10 +1,7 @@
-export enum EmploymentStatus {
-    STUDENT = 'student',
-    FULL_TIME = 'fullTime',
-    PART_TIME = 'partTime',
-}
+export type EmploymentStatus = 'Student' | 'Part Time' | 'Full Time';
 
 export interface CustomerParams {
+    id: string;
     name: string;
     lastName: string;
     employmentStatus: EmploymentStatus;
@@ -12,6 +9,8 @@ export interface CustomerParams {
 }
 
 export default class Customer {
+    private _id: string;
+
     private _name: string;
 
     private _lastName: string;
@@ -21,11 +20,16 @@ export default class Customer {
     private _income: number;
 
     constructor(customer: CustomerParams) {
-        const { name, lastName, employmentStatus, income } = customer;
+        const { id, name, lastName, employmentStatus, income } = customer;
+        this._id = id;
         this._name = name;
         this._lastName = lastName;
         this._employmentStatus = employmentStatus;
         this._income = income;
+    }
+
+    get id(): string {
+        return this._id;
     }
 
     get name(): string {

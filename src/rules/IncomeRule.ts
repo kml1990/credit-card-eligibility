@@ -1,4 +1,4 @@
-import Customer from '../customer/Customer';
+import Customer from '../customer/domain/Customer';
 import { Rule } from './Rule';
 
 export interface IcomeRulesParams {
@@ -6,7 +6,7 @@ export interface IcomeRulesParams {
     max?: number;
 }
 
-export class IncomeRule implements Rule<Customer> {
+export default class IncomeRule implements Rule<Customer> {
     private _min: number;
 
     private _max: number;

@@ -61,6 +61,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        "@typescript-eslint/naming-convention": "off",
         "no-underscore-dangle": "off",
         "react/jsx-props-no-spreading": "off",
         "react/button-has-type": "off",
