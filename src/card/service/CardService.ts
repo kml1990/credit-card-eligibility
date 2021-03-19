@@ -3,20 +3,27 @@ import DependencyType from '../../di/DependencyType';
 import Card from '../domain/Card';
 import { CardDto } from '../dto/CardDto';
 import CardParser from '../parser/CardParser';
-import cards from '../cards.json';
+import cardsDto from '../cards.json';
 
 @injectable()
 export default class CardService {
     private readonly _cards: Set<Card>;
 
-    private readonly _parser: CardParser;
+    private readonly _cardParser: CardParser;
 
-    constructor(@inject(DependencyType.CardParser) parser: CardParser) {
-        this._parser = parser;
+    constructor(@inject(DependencyType.CardParser) cardParser: CardParser) {
+        this._cardParser = cardParser;
         this._cards = new Set();
     }
 
-    loadCards(): Card[] {
-        return (cards as CardDto[]).map(card => this._parser.parse(card));
+    getCards(): Card[] {
+        if (this._cards.size === 0) {
+            this.fetchCards().map(card => this._cards.add(card));
+        }
+        return Array.from(this._cards);
+    }
+
+    private fetchCards(): Card[] {
+        return (cardsDto as CardDto[]).map(card => this._cardParser.parse(card));
     }
 }

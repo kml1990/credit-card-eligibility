@@ -1,9 +1,8 @@
 export type EmploymentStatusDto = 'Student' | 'Part Time' | 'Full Time';
-
 export interface CustomerDto {
     id: string;
     name: string;
-    lastName: string;
-    employmentStatus: EmploymentStatusDto;
+    last_name: string;
+    employment_status: EmploymentStatusDto;
     income: number;
 }

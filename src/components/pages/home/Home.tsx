@@ -2,13 +2,11 @@ import { Form, Formik, FormikProps } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import { FaBeer, FaSpinner } from 'react-icons/fa';
-import Button from '../common/button/Button';
-import Icon from '../common/icon/Icon';
-import InputField from '../common/input/InputField';
-import { useInjection } from '../../di/DependencyContext';
-import CardService from '../../card/service/CardService';
-import DependencyType from '../../di/DependencyType';
-import Customer from '../../customer/domain/Customer';
+import Button from '../../common/button/Button';
+import Icon from '../../common/icon/Icon';
+import InputField from '../../common/input/InputField';
+import { useCards } from '../../cards/CardsContext';
+import { useCustomers } from '../../customers/CustomersContext';
 
 import './Home.scss';
 
@@ -23,22 +21,15 @@ const SimpleFormSchema = Yup.object().shape({
 });
 
 const Home: React.FC = () => {
-    const cardService = useInjection<CardService>(DependencyType.CardService);
-    const customerParams = {
-        id: '549b60a6-88ed-11eb-8dcd-0242ac130003',
-        name: 'Kamil',
-        lastName: 'Step',
-        employmentStatus: 'Student',
-        income: 17000,
-    };
-    const customer = new Customer(customerParams);
-    const cards = cardService.loadCards();
+    const { cards } = useCards();
+    const { customers } = useCustomers();
 
-    const eligible = cards.filter(card => {
-        return card.isApplicableForCustomer(customer);
+    const cardsPerCustomer = customers.map(customer => {
+        const eligibleCards = cards.filter(card => card.isApplicableForCustomer(customer));
+        return { name: customer.name, cards: eligibleCards };
     });
 
-    console.log(eligible);
+    console.log(cardsPerCustomer);
 
     const initialValues = {
         username: '',

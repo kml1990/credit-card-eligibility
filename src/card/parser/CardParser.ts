@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
-import DependencyType from '../../di/DependencyType';
 import RuleParser from '../../rules/parser/RuleParser';
 import { Parser } from '../../types/Types';
 import EligibilityValidator from '../../validators/EligibilityValidator';
 import Card, { CardParams } from '../domain/Card';
 import { CardDto } from '../dto/CardDto';
+import DependencyType from '../../di/DependencyType';
 
 @injectable()
 export default class CardParser implements Parser<CardDto, Card> {
@@ -32,7 +32,7 @@ export default class CardParser implements Parser<CardDto, Card> {
             creditAvailable: credit_available,
         };
 
-        const rules = this._ruleParser.parse(eligibility_rules);
+        const rules = eligibility_rules.map(rule => this._ruleParser.parse(rule));
         const validators = new EligibilityValidator(rules);
         return new Card(cardParams, validators);
     }

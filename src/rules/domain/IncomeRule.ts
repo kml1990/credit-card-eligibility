@@ -1,4 +1,4 @@
-import Customer from '../customer/domain/Customer';
+import Customer from '../../customer/domain/Customer';
 import { Rule } from './Rule';
 
 export interface IcomeRulesParams {

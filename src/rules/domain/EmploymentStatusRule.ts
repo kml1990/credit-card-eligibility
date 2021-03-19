@@ -1,4 +1,4 @@
-import Customer, { EmploymentStatus } from '../customer/domain/Customer';
+import Customer, { EmploymentStatus } from '../../customer/domain/Customer';
 import { Rule } from './Rule';
 
 export default class EmploymentStatusRule implements Rule<Customer> {
@@ -9,6 +9,6 @@ export default class EmploymentStatusRule implements Rule<Customer> {
     }
 
     isEligible({ employmentStatus }: Customer): boolean {
-        return employmentStatus === this._employmentStatus;
+        return employmentStatus.toLowerCase() === this._employmentStatus.toLowerCase();
     }
 }

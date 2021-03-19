@@ -5,12 +5,14 @@ import { CustomerDto } from '../dto/CustomerDto';
 
 @injectable()
 export default class CustomerParser implements Parser<CustomerDto, Customer> {
-    parse({ id, name, lastName, employmentStatus, income }: CustomerDto): Customer {
+    parse(customerDto: CustomerDto): Customer {
+        const { id, name, last_name, employment_status, income } = customerDto;
+
         const customerParams = {
             id,
             name,
-            lastName,
-            employmentStatus,
+            lastName: last_name,
+            employmentStatus: employment_status,
             income,
         };
 

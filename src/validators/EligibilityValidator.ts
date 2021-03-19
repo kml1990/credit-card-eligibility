@@ -1,4 +1,4 @@
-import { Rule } from '../rules/Rule';
+import { Rule } from '../rules/domain/Rule';
 import { Validator } from './Validator';
 
 export default class EligibilityValidator<T> implements Validator<T> {

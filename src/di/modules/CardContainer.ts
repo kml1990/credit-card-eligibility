@@ -1,6 +1,6 @@
 import { ContainerModule, interfaces } from 'inversify';
-import CardParser from '../../card/parser/CardParser';
 import CardService from '../../card/service/CardService';
+import CardParser from '../../card/parser/CardParser';
 import DependencyType from '../DependencyType';
 
 const CardContainer = new ContainerModule((bind: interfaces.Bind) => {
