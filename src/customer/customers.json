@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Mr.",
+        "name": "Ollie",
+        "last_name": "Murphree",
+        "DOB": "01/07/1970",
+        "employment_status": "Full Time",
+        "income": 34000,
+        "house_number": 700,
+        "post_code": "BS14 9PR"
+    },
+    {
+        "title": "Miss",
+        "name": "Elizabeth",
+        "last_name": "Edmundson",
+        "DOB": "29/06/1984",
+        "employment_status": "Student",
+        "income": 17000,
+        "house_number": 177,
+        "post_code": "PH12 8UW"
+    },
+    {
+        "title": "Mr.",
+        "name": "Trevor",
+        "last_name": "Rieck",
+        "DOB": "07/09/1990",
+        "employment_status": "Part time",
+        "income": 15000,
+        "house_number": 343,
+        "post_code": "TS25 2NF"
+    }
+]

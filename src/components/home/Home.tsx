@@ -33,7 +33,6 @@ const Home: React.FC = () => {
                     actions.setSubmitting(true);
                     setTimeout(() => {
                         actions.setSubmitting(false);
-                        console.log(values);
                     }, 1000);
                 }}
             >

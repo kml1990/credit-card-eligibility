@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Student Life",
+        "apr": 18.9,
+        "balance_transfer_offer_duration": 0,
+        "purchase_offer_duration": 6,
+        "credit_available": 1200,
+        "eligibility": [
+            {
+                "field": "employmentStatus",
+                "type": "string",
+                "value": "student"
+            }
+        ]
+    },
+    {
+        "name": "Anywhere Card",
+        "apr": 33.9,
+        "balance_transfer_offer_duration": 0,
+        "purchase_offer_duration": 0,
+        "credit_available": 300,
+        "eligibility": []
+    },
+    {
+        "name": "Liquid Card",
+        "apr": 33.9,
+        "balance_transfer_offer_duration": 12,
+        "purchase_offer_duration": 6,
+        "credit_available": 3000,
+        "eligibility": [
+            {
+                "field": "income",
+                "type": "number",
+                "value": {
+                    "min": 16000
+                }
+            }
+        ]
+    }
+]
