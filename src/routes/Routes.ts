@@ -1,40 +1,39 @@
 import { RouteProps } from 'react-router';
-import Home from '../components/pages/home/Home';
+import Cards from '../components/pages/credit_cards/CreditCards';
+import Customers from '../components/pages/customers/Customers';
+import CheckCredit from '../components/pages/check_credit/CheckCredit';
 
 export const Routes = {
-    HOME: '/',
+    CHECK_CREDIT: '/check-credit',
     CUSTOMERS: '/customers',
-    CARDS: '/cards',
-    CARD: '/cards/:card',
+    CREDIT_CARDS: '/credit-cards',
 };
 
 export interface RouteConfig extends RouteProps {
     id: string;
+    name: string;
 }
 
 export const RoutesConfig: RouteConfig[] = [
     {
-        id: 'home',
-        path: Routes.HOME,
+        id: 'check-credit',
+        name: 'Check Eligibility',
+        path: Routes.CHECK_CREDIT,
         exact: true,
-        component: Home,
+        component: CheckCredit,
     },
     {
         id: 'customers',
+        name: 'Customers',
         path: Routes.CUSTOMERS,
         exact: true,
-        component: Home,
+        component: Customers,
     },
     {
-        id: 'cards',
-        path: Routes.CARDS,
+        id: 'credit-cards',
+        name: 'Credit Cards',
+        path: Routes.CREDIT_CARDS,
         exact: true,
-        component: Home,
-    },
-    {
-        id: 'card',
-        path: Routes.CARD,
-        exact: true,
-        component: Home,
+        component: Cards,
     },
 ];

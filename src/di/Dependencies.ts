@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import { QueryClient } from 'react-query';
 import DependencyType from './DependencyType';
-import CardContainer from './modules/CardContainer';
+import CreditCardContainer from './modules/CreditCardContainer';
 import CustomerContainer from './modules/CustomerContainer';
 import RuleParser from '../rules/parser/RuleParser';
 
@@ -17,6 +17,6 @@ export const initDependencies = async (): Promise<void> => {
         .to(RuleParser)
         .inSingletonScope();
 
-    dependenciesContainer.load(CardContainer);
+    dependenciesContainer.load(CreditCardContainer);
     dependenciesContainer.load(CustomerContainer);
 };

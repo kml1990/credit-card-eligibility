@@ -1,0 +1,13 @@
+@import '/src/styles/styles.scss';
+
+.Radio {
+
+    &__label {
+        width: 100%;
+    }
+    
+    &__optionLabel,
+    &__input {
+        margin-right: $smallMargin;
+    }
+}

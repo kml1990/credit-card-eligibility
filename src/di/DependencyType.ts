@@ -1,8 +1,8 @@
 const DependencyType = {
     QueryClient: Symbol.for('QueryClient'),
     RuleParser: Symbol.for('RuleParser'),
-    CardParser: Symbol.for('CardParser'),
-    CardService: Symbol.for('CardService'),
+    CreditCardParser: Symbol.for('CreditCardParser'),
+    CreditCardService: Symbol.for('CreditCardService'),
     CustomerService: Symbol.for('CustomerService'),
     CustomerParser: Symbol.for('CustomerParser'),
 };

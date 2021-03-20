@@ -1,7 +1,8 @@
 import Customer from '../../customer/domain/Customer';
 import { Validator } from '../../validators/Validator';
 
-export interface CardParams {
+export interface CreditCardParams {
+    id: string;
     name: string;
     apr: number;
     balanceTransferOfferDuration: number;
@@ -9,7 +10,9 @@ export interface CardParams {
     creditAvailable: number;
 }
 
-export default class Card {
+export default class CreditCard {
+    private readonly _id: string;
+
     private readonly _name: string;
 
     private readonly _apr: number;
@@ -22,20 +25,27 @@ export default class Card {
 
     private _customerValidator: Validator<Customer>;
 
-    constructor(card: CardParams, customerValidator: Validator<Customer>) {
+    constructor(card: CreditCardParams, customerValidator: Validator<Customer>) {
         const {
+            id,
             name,
             apr,
             balanceTransferOfferDuration,
             purchaseOfferDuration,
             creditAvailable,
         } = card;
+        this._id = id;
         this._name = name;
         this._apr = apr;
         this._balanceTransferOfferDuration = balanceTransferOfferDuration;
         this._purchaseOfferDuration = purchaseOfferDuration;
         this._creditAvailable = creditAvailable;
+        // TODO maybe separate this
         this._customerValidator = customerValidator;
+    }
+
+    get id(): string {
+        return this._id;
     }
 
     get name(): string {

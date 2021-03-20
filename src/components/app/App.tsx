@@ -4,8 +4,10 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useInjection } from '../../di/DependencyContext';
 import DependencyType from '../../di/DependencyType';
 import { Routes, RoutesConfig } from '../../routes/Routes';
-import { CardsProvider } from '../cards/CardsContext';
+import AppContent from '../content/AppContent';
+import { CreditCardsProvider } from '../credit_cards/CreditCardsContext';
 import { CustomersProvider } from '../customers/CustomersContext';
+import AppNavbar from '../navbar/AppNavbar';
 
 import './App.scss';
 
@@ -14,18 +16,26 @@ const App: React.FC = () => {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <CardsProvider>
+            <CreditCardsProvider>
                 <CustomersProvider>
                     <BrowserRouter>
-                        <Switch>
-                            {RoutesConfig.map(({ id, exact, path, component }) => (
-                                <Route key={id} exact={exact} path={path} component={component} />
-                            ))}
-                            <Redirect to={Routes.HOME} />
-                        </Switch>
+                        <AppNavbar />
+                        <AppContent>
+                            <Switch>
+                                {RoutesConfig.map(({ id, exact, path, component }) => (
+                                    <Route
+                                        key={id}
+                                        exact={exact}
+                                        path={path}
+                                        component={component}
+                                    />
+                                ))}
+                                <Redirect to={Routes.CHECK_CREDIT} />
+                            </Switch>
+                        </AppContent>
                     </BrowserRouter>
                 </CustomersProvider>
-            </CardsProvider>
+            </CreditCardsProvider>
         </QueryClientProvider>
     );
 };

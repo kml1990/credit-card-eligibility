@@ -1,6 +1,7 @@
 import { RuleDto } from '../../rules/dto/RuleDto';
 
-export interface CardDto {
+export interface CreditCardDto {
+    id: string;
     name: string;
     apr: number;
     balance_transfer_offer_duration: number;

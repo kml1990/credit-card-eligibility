@@ -1,5 +1,6 @@
 [
     {
+        "id": "eb66b190-71a2-456d-9f5d-4db67d36c0c9",
         "name": "Student Life",
         "apr": 18.9,
         "balance_transfer_offer_duration": 0,
@@ -13,6 +14,7 @@
         ]
     },
     {
+        "id": "124970ef-305a-439b-94d9-aef89db56104",
         "name": "Anywhere Card",
         "apr": 33.9,
         "balance_transfer_offer_duration": 0,
@@ -21,6 +23,7 @@
         "eligibility_rules": []
     },
     {
+        "id": "c342f8f4-5f4c-45ba-baec-c1cd24d5cd52",
         "name": "Liquid Card",
         "apr": 33.9,
         "balance_transfer_offer_duration": 12,

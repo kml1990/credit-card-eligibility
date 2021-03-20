@@ -1,0 +1,15 @@
+@import '/src/styles/styles.scss';
+
+$formWidth: 20rem;
+
+.CheckCredit {
+    @extend %flexCenter;
+    padding: $mediumPadding;
+
+    // &__form {
+    //     @extend %flexCenterVertically;
+    //     justify-content: flex-end;
+    //     flex-wrap: wrap;
+    //     width: $formWidth;
+    // }
+}

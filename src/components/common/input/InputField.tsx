@@ -16,7 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, ...props }) => {
             <label className="InputField__label" htmlFor={field.name}>
                 {label}
             </label>
-            <input className="InputField__input" id={field.name} {...field} {...props} />
+            <input className="InputField__input" {...field} {...props} />
             {error && (
                 <ErrorMessage component="span" className="InputField__error" name={field.name} />
             )}

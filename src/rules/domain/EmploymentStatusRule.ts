@@ -1,4 +1,5 @@
-import Customer, { EmploymentStatus } from '../../customer/domain/Customer';
+import Customer from '../../customer/domain/Customer';
+import { EmploymentStatus } from '../../types/Types';
 import { Rule } from './Rule';
 
 export default class EmploymentStatusRule implements Rule<Customer> {

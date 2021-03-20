@@ -1,0 +1,10 @@
+@import '/src/styles/styles.scss';
+
+.CreditCardListItem {
+    margin-top: $mediumMargin;
+
+    &__title {
+        margin-top: $mediumMargin;
+    }
+}
+
