@@ -4,6 +4,7 @@ import Card from '../domain/CreditCard';
 import { CreditCardDto } from '../dto/CreditCardDto';
 import CreditCardParser from '../parser/CreditCardParser';
 import creditCardsDto from '../credit_cards.json';
+import Customer from '../../customer/domain/Customer';
 
 @injectable()
 export default class CreditCardService {
@@ -21,6 +22,10 @@ export default class CreditCardService {
             this.fetchCards().map(card => this._cards.add(card));
         }
         return Array.from(this._cards);
+    }
+
+    getCardsForCustomer(customer: Customer): Card[] {
+        return Array.from(this._cards).filter(card => card.isApplicableForCustomer(customer));
     }
 
     private fetchCards(): Card[] {

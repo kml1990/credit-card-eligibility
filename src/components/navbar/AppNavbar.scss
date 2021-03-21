@@ -3,6 +3,14 @@
 .AppNavbar {
     &__link {
         color: $white;
-        margin-left: $mediumMargin;
+        text-align: center;
+        border-bottom: $border;
+        padding: $smallPadding;
+
+        @include respond-above(md) {
+            margin-left: $mediumMargin;
+            padding: 0;
+            border: 0;
+        }
     }
 }

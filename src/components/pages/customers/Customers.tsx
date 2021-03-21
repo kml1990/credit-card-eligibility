@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
-import { useCustomers } from '../../customers/CustomersContext';
+import React from 'react';
+import CustomersList from '../../customers/CustomerList';
 
 const Customers: React.FC = () => {
-    const { customers, loadCustomers } = useCustomers();
-
-    useEffect(() => {
-        loadCustomers();
-    }, [loadCustomers]);
-
     return (
         <div className="Customers">
-            <pre>{JSON.stringify(customers, null, 2)}</pre>
+            <CustomersList />
         </div>
     );
 };

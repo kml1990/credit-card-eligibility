@@ -1,0 +1,10 @@
+@import '/src/styles/styles.scss';
+
+.CustomerList {
+    @extend %flexCenterHorizontally;
+    flex-wrap: wrap;
+
+    > * {
+        width: 100%;
+    }
+}

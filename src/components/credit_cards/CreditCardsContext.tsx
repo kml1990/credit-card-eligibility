@@ -1,12 +1,15 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import Card from '../../card/domain/CreditCard';
 import CardService from '../../card/service/CreditCardService';
+import Customer from '../../customer/domain/Customer';
 import { useInjection } from '../../di/DependencyContext';
 import DependencyType from '../../di/DependencyType';
 
+export type GetCreditCardsForCustomer = (customer: Customer) => Card[];
 export interface CreditCardsContextProps {
     creditCards: Card[];
     loadCreditCards: () => void;
+    getCreditCardsForCustomer: GetCreditCardsForCustomer;
 }
 
 export const CreditCardsContext = createContext<CreditCardsContextProps>(
@@ -21,9 +24,18 @@ export const CreditCardsProvider: React.FC = ({ children }) => {
         setCreditCards(creditCardService.getCards());
     }, [creditCardService]);
 
+    useEffect(() => {
+        loadCreditCards();
+    }, [loadCreditCards]);
+
+    const getCreditCardsForCustomer = (customer: Customer) => {
+        return creditCardService.getCardsForCustomer(customer);
+    };
+
     const values = {
         creditCards,
         loadCreditCards,
+        getCreditCardsForCustomer,
     };
 
     return <CreditCardsContext.Provider value={values}>{children}</CreditCardsContext.Provider>;

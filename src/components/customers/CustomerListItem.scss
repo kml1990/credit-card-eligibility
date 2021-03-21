@@ -1,7 +1,14 @@
 @import '/src/styles/styles.scss';
 
-.CreditCardListItem {
+.CustomerListItem {
+    @extend %flexCenter;
     margin: $mediumMargin 0;
+    cursor: pointer;
+    width: 100%;
+
+    &__card {
+        max-width: 30rem;
+    }
 
     &__title {
         margin-top: $mediumMargin;

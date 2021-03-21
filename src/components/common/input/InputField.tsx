@@ -8,15 +8,15 @@ export interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, ...props }) => {
+const InputField: React.FC<InputFieldProps> = ({ label, type, ...props }) => {
     const [field, { error }] = useField(props);
 
     return (
         <div className="InputField">
             <label className="InputField__label" htmlFor={field.name}>
-                {label}
+                {type === 'range' ? `${label}${field.value}` : label}
             </label>
-            <input className="InputField__input" {...field} {...props} />
+            <input type={type} className="InputField__input" {...field} {...props} />
             {error && (
                 <ErrorMessage component="span" className="InputField__error" name={field.name} />
             )}

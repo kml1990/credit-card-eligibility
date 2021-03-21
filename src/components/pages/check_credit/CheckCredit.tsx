@@ -1,7 +1,7 @@
 import { Form, Formik, FormikProps } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import { FaBeer, FaSpinner } from 'react-icons/fa';
+import { FaPaperPlane } from 'react-icons/fa';
 import { Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { useCustomers } from '../../customers/CustomersContext';
@@ -10,29 +10,21 @@ import Icon from '../../common/icon/Icon';
 import InputField from '../../common/input/InputField';
 import { CustomerForm, EmploymentStatuses, Titles } from '../../../types/Types';
 import Radio from '../../common/input/Radio';
+import Loader from '../../common/loader/Loader';
 
 import './CheckCredit.scss';
 
-// TODO more validation for forms
 const CustomerFromSchema = Yup.object().shape({
     name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
     lastName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+    dob: Yup.string().required('Required'),
     employmentStatus: Yup.string().required('Required'),
-    income: Yup.number().required('Required'),
+    income: Yup.number().min(1, 'To low').required('Required'),
 });
 
 const CheckCredit: React.FC = () => {
     const history = useHistory();
     const { addCustomer } = useCustomers();
-    // const { cards } = useCards();
-    // const { customers } = useCustomers();
-
-    // const cardsPerCustomer = customers.map(customer => {
-    //     const eligibleCards = cards.filter(card => card.isApplicableForCustomer(customer));
-    //     return { name: customer.name, cards: eligibleCards };
-    // });
-
-    // console.log(cardsPerCustomer);
 
     const initialValues: CustomerForm = {
         title: 'Mr.',
@@ -52,23 +44,23 @@ const CheckCredit: React.FC = () => {
                 validationSchema={CustomerFromSchema}
                 onSubmit={values => {
                     const customer = addCustomer(values);
-                    history.push(`/customers`);
+                    history.push(`/customers/${customer.id}`);
                 }}
             >
                 {({ isSubmitting }: FormikProps<CustomerForm>) => (
                     <Form className="CheckCredit__form">
                         <Row>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <Radio name="title" label="Title" options={Titles} />
                             </Col>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <InputField
                                     name="name"
                                     placeholder="Type here..."
                                     label="First Name"
                                 />
                             </Col>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <InputField
                                     name="lastName"
                                     placeholder="Type here..."
@@ -77,14 +69,14 @@ const CheckCredit: React.FC = () => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <Radio
                                     name="employmentStatus"
                                     label="Employment Status"
                                     options={EmploymentStatuses}
                                 />
                             </Col>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <InputField
                                     type="date"
                                     name="dob"
@@ -92,24 +84,27 @@ const CheckCredit: React.FC = () => {
                                     label="Date Of Birth"
                                 />
                             </Col>
-                            <Col>
+                            <Col sm={12} md={4}>
                                 <InputField
-                                    type="number"
+                                    type="range"
+                                    min="0"
+                                    max="100000"
+                                    step="500"
                                     name="income"
                                     placeholder="Type here..."
-                                    label="Income"
+                                    label="Salary: £"
                                 />
                             </Col>
                         </Row>
                         <Row>
-                            <Col>
+                            <Col sm={12} md={6}>
                                 <InputField
                                     name="houseNo"
                                     placeholder="Type here..."
                                     label="House Number"
                                 />
                             </Col>
-                            <Col>
+                            <Col sm={12} md={6}>
                                 <InputField
                                     name="postCode"
                                     placeholder="Type here..."
@@ -121,12 +116,10 @@ const CheckCredit: React.FC = () => {
                             <Col>
                                 <Button type="submit">
                                     {isSubmitting ? (
-                                        <Icon spin>
-                                            <FaSpinner />
-                                        </Icon>
+                                        <Loader />
                                     ) : (
                                         <Icon>
-                                            <FaBeer />
+                                            <FaPaperPlane />
                                         </Icon>
                                     )}{' '}
                                     Submit

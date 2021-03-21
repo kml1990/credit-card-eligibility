@@ -30,6 +30,11 @@ export default class CustomerService {
         return customer;
     }
 
+    getCustomer(id: string): Customer | undefined {
+        console.log(this._customers);
+        return this._customers.get(id);
+    }
+
     private fetchCustomers(): Customer[] {
         return (customersDto as CustomerDto[]).map(this._parser.parse);
     }
