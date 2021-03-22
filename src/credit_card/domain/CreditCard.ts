@@ -40,7 +40,6 @@ export default class CreditCard {
         this._balanceTransferOfferDuration = balanceTransferOfferDuration;
         this._purchaseOfferDuration = purchaseOfferDuration;
         this._creditAvailable = creditAvailable;
-        // TODO maybe separate this
         this._customerValidator = customerValidator;
     }
 

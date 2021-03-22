@@ -1,23 +1,25 @@
 import React, { useCallback, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import CreditCard from '../../card/domain/CreditCard';
+import CreditCard from '../../credit_card/domain/CreditCard';
+import { SelectedCard } from '../../credit_card/service/CreditCardCalculator';
 import Button from '../common/button/Button';
 
 import './CreditCardListItem.scss';
 
-export interface SelectedCard {
-    id: string;
-    creditAvailable: number;
-}
 export type OnCardSelected = (selectedCard: SelectedCard, selected: boolean) => void;
 
 export interface CreditCardListItemProps {
     creditCard: CreditCard;
+    selectable: boolean;
     onCardSelected: OnCardSelected;
 }
 
-const CreditCardListItem: React.FC<CreditCardListItemProps> = ({ creditCard, onCardSelected }) => {
+const CreditCardListItem: React.FC<CreditCardListItemProps> = ({
+    creditCard,
+    selectable,
+    onCardSelected,
+}) => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
 
     const {
@@ -59,11 +61,13 @@ const CreditCardListItem: React.FC<CreditCardListItemProps> = ({ creditCard, onC
                                 Credit Available: <strong>£{creditAvailable}</strong>
                             </span>
                         </Col>
-                        <Col className="CreditCardListItem__button" sm={12} md={6}>
-                            <Button onClicked={onClick}>
-                                {isSelected ? 'Unselect' : 'Select'} Card
-                            </Button>
-                        </Col>
+                        {selectable && (
+                            <Col className="CreditCardListItem__button" sm={12} md={6}>
+                                <Button onClicked={onClick}>
+                                    {isSelected ? 'Unselect' : 'Select'} Card
+                                </Button>
+                            </Col>
+                        )}
                     </Row>
                 </Card.Body>
             </Card.Body>

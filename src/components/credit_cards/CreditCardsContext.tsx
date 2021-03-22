@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import Card from '../../card/domain/CreditCard';
-import CardService from '../../card/service/CreditCardService';
+import Card from '../../credit_card/domain/CreditCard';
+import CardService from '../../credit_card/service/CreditCardService';
 import Customer from '../../customer/domain/Customer';
 import { useInjection } from '../../di/DependencyContext';
 import DependencyType from '../../di/DependencyType';

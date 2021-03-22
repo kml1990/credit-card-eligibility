@@ -21,7 +21,7 @@ const Customer: React.FC = () => {
 
     return (
         <div className="Customer">
-            <CreditCardList customer={customer} />
+            <CreditCardList customer={customer} selectable />
         </div>
     );
 };

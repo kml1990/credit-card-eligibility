@@ -31,7 +31,6 @@ export default class CustomerService {
     }
 
     getCustomer(id: string): Customer | undefined {
-        console.log(this._customers);
         return this._customers.get(id);
     }
 

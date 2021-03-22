@@ -67,5 +67,6 @@ module.exports = {
         "react/button-has-type": "off",
         "import/no-named-as-default": 0,
         "react/prop-types": 0,
+        "no-param-reassign": 0,
     },
 };
