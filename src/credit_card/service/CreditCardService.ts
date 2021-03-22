@@ -1,14 +1,13 @@
 import { inject, injectable } from 'inversify';
 import DependencyType from '../../di/DependencyType';
-import Card from '../domain/CreditCard';
+import CreditCard from '../domain/CreditCard';
 import { CreditCardDto } from '../dto/CreditCardDto';
 import CreditCardParser from '../parser/CreditCardParser';
-import creditCardsDto from '../credit_cards.json';
 import Customer from '../../customer/domain/Customer';
 
 @injectable()
 export default class CreditCardService {
-    private readonly _cards: Set<Card>;
+    private readonly _cards: Set<CreditCard>;
 
     private readonly _cardParser: CreditCardParser;
 
@@ -17,18 +16,25 @@ export default class CreditCardService {
         this._cards = new Set();
     }
 
-    getCards(): Card[] {
+    async getCards(): Promise<CreditCard[]> {
         if (this._cards.size === 0) {
-            this.fetchCards().map(card => this._cards.add(card));
+            const cards = await this.fetchCards();
+            const parsedCards = this.parseCards(cards);
+            parsedCards.map(card => this._cards.add(card));
         }
         return Array.from(this._cards);
     }
 
-    getCardsForCustomer(customer: Customer): Card[] {
+    getCardsForCustomer(customer: Customer): CreditCard[] {
         return Array.from(this._cards).filter(card => card.isApplicableForCustomer(customer));
     }
 
-    private fetchCards(): Card[] {
-        return (creditCardsDto as CreditCardDto[]).map(card => this._cardParser.parse(card));
+    private parseCards(cards: CreditCardDto[]): CreditCard[] {
+        return cards.map(card => this._cardParser.parse(card));
+    }
+
+    private async fetchCards(): Promise<CreditCardDto[]> {
+        const images = await fetch('/credit-cards');
+        return images.json();
     }
 }

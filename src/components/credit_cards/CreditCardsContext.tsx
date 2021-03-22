@@ -20,8 +20,9 @@ export const CreditCardsProvider: React.FC = ({ children }) => {
     const creditCardService = useInjection<CardService>(DependencyType.CreditCardService);
     const [creditCards, setCreditCards] = useState<Card[]>([]);
 
-    const loadCreditCards = useCallback(() => {
-        setCreditCards(creditCardService.getCards());
+    const loadCreditCards = useCallback(async () => {
+        const cards = await creditCardService.getCards();
+        setCreditCards(cards);
     }, [creditCardService]);
 
     useEffect(() => {

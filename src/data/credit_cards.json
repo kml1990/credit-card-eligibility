@@ -10,6 +10,12 @@
             {
                 "field": "employmentStatus",
                 "value": "student"
+            },
+            {
+                "field": "income",
+                "value": {
+                    "min": 16000
+                }
             }
         ]
     },

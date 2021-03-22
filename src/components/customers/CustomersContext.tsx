@@ -21,8 +21,9 @@ export const CustomersProvider: React.FC = ({ children }) => {
     const customerService = useInjection<CustomerService>(DependencyType.CustomerService);
     const [customers, setCustomers] = useState<Customer[]>([]);
 
-    const loadCustomers = useCallback(() => {
-        setCustomers(customerService.getCustomers());
+    const loadCustomers = useCallback(async () => {
+        const getCustomers = await customerService.getCustomers();
+        setCustomers(getCustomers);
     }, [customerService]);
 
     useEffect(() => {

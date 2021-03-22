@@ -1,6 +1,5 @@
 import { inject, injectable } from 'inversify';
 import Customer from '../domain/Customer';
-import customersDto from '../customers.json';
 import { CustomerDto } from '../dto/CustomerDto';
 import CustomerParser from '../parser/CustomerParser';
 import DependencyType from '../../di/DependencyType';
@@ -17,9 +16,11 @@ export default class CustomerService {
         this._customers = new Map();
     }
 
-    getCustomers(): Customer[] {
+    async getCustomers(): Promise<Customer[]> {
         if (this._customers.size === 0) {
-            this.fetchCustomers().map(customer => this.addCustomer(customer));
+            const customers = await this.fetchCustomers();
+            const parsedCustomers = this.parseCustomers(customers);
+            parsedCustomers.map(customer => this.addCustomer(customer));
         }
         return Array.from(this._customers.values());
     }
@@ -34,7 +35,12 @@ export default class CustomerService {
         return this._customers.get(id);
     }
 
-    private fetchCustomers(): Customer[] {
-        return (customersDto as CustomerDto[]).map(this._parser.parse);
+    private parseCustomers(customers: CustomerDto[]): Customer[] {
+        return customers.map(customer => this._parser.parse(customer));
+    }
+
+    private async fetchCustomers(): Promise<CustomerDto[]> {
+        const images = await fetch('/customers');
+        return images.json();
     }
 }
